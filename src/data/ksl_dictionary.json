@@ -1,0 +1,199 @@
+{
+  "_comment": "KSL dictionary. Each entry: sequence of { pose, duration(ms) }. poseName references POSES in handPoses.js",
+  "안녕": {
+    "description": "안녕 / 안녕하세요",
+    "sequence": [
+      { "pose": "open",    "duration": 200 },
+      { "pose": "fist",    "duration": 200 },
+      { "pose": "open",    "duration": 200 },
+      { "pose": "fist",    "duration": 200 },
+      { "pose": "open",    "duration": 300 }
+    ]
+  },
+  "안녕하세요": {
+    "description": "안녕하세요 (인사)",
+    "sequence": [
+      { "pose": "open",    "duration": 200 },
+      { "pose": "fist",    "duration": 200 },
+      { "pose": "open",    "duration": 200 },
+      { "pose": "fist",    "duration": 200 },
+      { "pose": "open",    "duration": 400 }
+    ]
+  },
+  "감사합니다": {
+    "description": "감사합니다 / 고마워요",
+    "sequence": [
+      { "pose": "open",    "duration": 300 },
+      { "pose": "thumbs_up", "duration": 500 },
+      { "pose": "open",    "duration": 300 }
+    ]
+  },
+  "고마워": {
+    "description": "고마워 / 감사",
+    "sequence": [
+      { "pose": "thumbs_up", "duration": 600 },
+      { "pose": "open",    "duration": 300 }
+    ]
+  },
+  "죄송합니다": {
+    "description": "죄송합니다 / 미안해요",
+    "sequence": [
+      { "pose": "fist",    "duration": 300 },
+      { "pose": "open",    "duration": 400 },
+      { "pose": "fist",    "duration": 300 }
+    ]
+  },
+  "미안해": {
+    "description": "미안해",
+    "sequence": [
+      { "pose": "fist",    "duration": 300 },
+      { "pose": "open",    "duration": 400 }
+    ]
+  },
+  "나": {
+    "description": "나 / 저",
+    "sequence": [
+      { "pose": "point",   "duration": 600 }
+    ]
+  },
+  "저": {
+    "description": "저 (나)",
+    "sequence": [
+      { "pose": "point",   "duration": 600 }
+    ]
+  },
+  "너": {
+    "description": "너 / 당신",
+    "sequence": [
+      { "pose": "point",   "duration": 600 }
+    ]
+  },
+  "당신": {
+    "description": "당신",
+    "sequence": [
+      { "pose": "point",   "duration": 600 }
+    ]
+  },
+  "이름": {
+    "description": "이름",
+    "sequence": [
+      { "pose": "peace",   "duration": 300 },
+      { "pose": "point",   "duration": 300 },
+      { "pose": "peace",   "duration": 300 }
+    ]
+  },
+  "네": {
+    "description": "네 / 예 (Yes)",
+    "sequence": [
+      { "pose": "thumbs_up", "duration": 500 }
+    ]
+  },
+  "예": {
+    "description": "예 (Yes)",
+    "sequence": [
+      { "pose": "thumbs_up", "duration": 500 }
+    ]
+  },
+  "아니요": {
+    "description": "아니요 / 아니",
+    "sequence": [
+      { "pose": "point",   "duration": 300 },
+      { "pose": "point_right", "duration": 300 },
+      { "pose": "point_left",  "duration": 300 },
+      { "pose": "point",   "duration": 300 }
+    ]
+  },
+  "아니": {
+    "description": "아니",
+    "sequence": [
+      { "pose": "point",   "duration": 300 },
+      { "pose": "point_right", "duration": 300 },
+      { "pose": "point_left",  "duration": 300 }
+    ]
+  },
+  "좋아요": {
+    "description": "좋아요 / 좋아",
+    "sequence": [
+      { "pose": "thumbs_up", "duration": 400 },
+      { "pose": "open",    "duration": 200 },
+      { "pose": "thumbs_up", "duration": 400 }
+    ]
+  },
+  "좋아": {
+    "description": "좋아",
+    "sequence": [
+      { "pose": "thumbs_up", "duration": 600 }
+    ]
+  },
+  "싫어요": {
+    "description": "싫어요",
+    "sequence": [
+      { "pose": "fist",    "duration": 300 },
+      { "pose": "open",    "duration": 400 },
+      { "pose": "fist",    "duration": 300 }
+    ]
+  },
+  "사랑해요": {
+    "description": "사랑해요",
+    "sequence": [
+      { "pose": "ily",     "duration": 800 }
+    ]
+  },
+  "사랑해": {
+    "description": "사랑해",
+    "sequence": [
+      { "pose": "ily",     "duration": 800 }
+    ]
+  },
+  "도움": {
+    "description": "도움 / 도와주세요",
+    "sequence": [
+      { "pose": "thumbs_up", "duration": 300 },
+      { "pose": "open",    "duration": 300 },
+      { "pose": "thumbs_up", "duration": 300 }
+    ]
+  },
+  "도와줘": {
+    "description": "도와줘",
+    "sequence": [
+      { "pose": "open",    "duration": 300 },
+      { "pose": "thumbs_up", "duration": 500 }
+    ]
+  },
+  "밥": {
+    "description": "밥 / 식사",
+    "sequence": [
+      { "pose": "ok",      "duration": 400 },
+      { "pose": "open",    "duration": 300 },
+      { "pose": "ok",      "duration": 400 }
+    ]
+  },
+  "물": {
+    "description": "물 / 음료",
+    "sequence": [
+      { "pose": "three",   "duration": 500 },
+      { "pose": "open",    "duration": 300 }
+    ]
+  },
+  "학교": {
+    "description": "학교",
+    "sequence": [
+      { "pose": "peace",   "duration": 400 },
+      { "pose": "four",    "duration": 400 },
+      { "pose": "open",    "duration": 300 }
+    ]
+  },
+  "공부": {
+    "description": "공부 / 배우다",
+    "sequence": [
+      { "pose": "open",    "duration": 300 },
+      { "pose": "point",   "duration": 300 },
+      { "pose": "fist",    "duration": 300 }
+    ]
+  },
+  "1": { "description": "숫자 1", "sequence": [{ "pose": "point", "duration": 500 }] },
+  "2": { "description": "숫자 2", "sequence": [{ "pose": "peace", "duration": 500 }] },
+  "3": { "description": "숫자 3", "sequence": [{ "pose": "three", "duration": 500 }] },
+  "4": { "description": "숫자 4", "sequence": [{ "pose": "four",  "duration": 500 }] },
+  "5": { "description": "숫자 5", "sequence": [{ "pose": "open",  "duration": 500 }] }
+}
