@@ -8,9 +8,9 @@ export default function App() {
   const [inputText, setInputText] = useState('')
 
   const {
-    play, pause, resume, replay,
+    play, pause, resume, stop,
     isPlaying, speed, setSpeed,
-    currentLandmarks, currentLabel, progress,
+    currentPose, currentLabel, progress,
   } = useSignAnimation()
 
   const handleSubmit = (text) => {
@@ -40,7 +40,7 @@ export default function App() {
         {/* 3D Avatar */}
         <div className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-800"
              style={{ aspectRatio: '4/3' }}>
-          <SignAvatar landmarks={currentLandmarks} />
+          <SignAvatar pose={currentPose} />
 
           {/* Idle overlay */}
           {!inputText && (
@@ -54,7 +54,7 @@ export default function App() {
           {/* Corner badge */}
           <div className="absolute top-3 right-3 px-2 py-1 rounded-md bg-slate-800/80
                           backdrop-blur text-slate-400 text-xs">
-            3D · MediaPipe 21pt
+            3D · 상반신 아바타
           </div>
         </div>
 
@@ -67,7 +67,7 @@ export default function App() {
             currentLabel={currentLabel}
             onPause={pause}
             onResume={resume}
-            onReplay={replay}
+            onReplay={(text) => play(text)}
             onSpeedChange={setSpeed}
             text={inputText}
           />
