@@ -194,32 +194,34 @@ const HOOK_THUMB = [
 // ─── 상반신 몸통 위치 ───────────────────────────────────────────────────────
 
 const B = {
+  // KSL idle: 양손을 가슴 옆 약간 앞으로 들고 있는 자세 (수어 시작/대기 자세)
   neutral: {
     head:          [ 0.00, 1.20, 0.05],
     leftShoulder:  [-0.35, 0.85, 0.00],
     rightShoulder: [ 0.35, 0.85, 0.00],
-    leftElbow:     [-0.52, 0.55, 0.10],
-    rightElbow:    [ 0.52, 0.55, 0.10],
-    leftWrist:     [-0.44, 0.22, 0.18],
-    rightWrist:    [ 0.44, 0.22, 0.18],
+    leftElbow:     [-0.45, 0.62, 0.20],
+    rightElbow:    [ 0.45, 0.62, 0.20],
+    leftWrist:     [-0.32, 0.70, 0.36],
+    rightWrist:    [ 0.32, 0.70, 0.36],
   },
-  chestR: {  // 오른손 가슴 앞, 왼손 중립
+  // 오른손 가슴 앞: 손가락이 위(+Y)를 향하도록 wrist 를 elbow 보다 위쪽에 배치 — 정면 시점에서 단축 방지.
+  chestR: {
     head:          [ 0.00, 1.20, 0.05],
     leftShoulder:  [-0.35, 0.85, 0.00],
     rightShoulder: [ 0.35, 0.85, 0.00],
-    leftElbow:     [-0.52, 0.55, 0.10],
-    rightElbow:    [ 0.48, 0.72, 0.18],
-    leftWrist:     [-0.44, 0.22, 0.18],
-    rightWrist:    [ 0.28, 0.62, 0.36],
+    leftElbow:     [-0.45, 0.62, 0.20],
+    rightElbow:    [ 0.42, 0.55, 0.20],
+    leftWrist:     [-0.32, 0.70, 0.36],
+    rightWrist:    [ 0.30, 0.95, 0.30],
   },
   chestBoth: {  // 양손 가슴 앞
     head:          [ 0.00, 1.20, 0.05],
     leftShoulder:  [-0.35, 0.85, 0.00],
     rightShoulder: [ 0.35, 0.85, 0.00],
-    leftElbow:     [-0.48, 0.72, 0.18],
-    rightElbow:    [ 0.48, 0.72, 0.18],
-    leftWrist:     [-0.28, 0.62, 0.36],
-    rightWrist:    [ 0.28, 0.62, 0.36],
+    leftElbow:     [-0.42, 0.55, 0.20],
+    rightElbow:    [ 0.42, 0.55, 0.20],
+    leftWrist:     [-0.20, 0.95, 0.30],
+    rightWrist:    [ 0.20, 0.95, 0.30],
   },
   waveHigh: {  // 오른팔 위로 들어 흔들기
     head:          [ 0.00, 1.20, 0.05],
@@ -239,14 +241,14 @@ const B = {
     leftWrist:     [-0.44, 0.22, 0.18],
     rightWrist:    [ 0.12, 0.62, 0.44],
   },
-  thumbsR: {  // 오른손 엄지 척 (좋아요 등)
+  thumbsR: {  // 오른손 엄지 척 (손가락이 위로 향해 엄지가 보이게)
     head:          [ 0.00, 1.20, 0.05],
     leftShoulder:  [-0.35, 0.85, 0.00],
     rightShoulder: [ 0.35, 0.85, 0.00],
-    leftElbow:     [-0.52, 0.55, 0.10],
-    rightElbow:    [ 0.48, 0.65, 0.18],
-    leftWrist:     [-0.44, 0.22, 0.18],
-    rightWrist:    [ 0.42, 0.52, 0.32],
+    leftElbow:     [-0.45, 0.62, 0.20],
+    rightElbow:    [ 0.42, 0.55, 0.20],
+    leftWrist:     [-0.32, 0.70, 0.36],
+    rightWrist:    [ 0.34, 0.92, 0.30],
   },
   rightOut: {  // 오른팔 오른쪽으로 뻗기 (ㅏ)
     head:          [ 0.00, 1.20, 0.05],
