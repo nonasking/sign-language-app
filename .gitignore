@@ -3,3 +3,6 @@ dist/
 .DS_Store
 *.local
 .idea/
+
+# 대용량 바이너리: VRM 모델은 로컬 public/avatars/default.vrm로 배치
+public/avatars/*.vrm
