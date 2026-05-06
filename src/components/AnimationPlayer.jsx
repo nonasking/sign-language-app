@@ -64,7 +64,7 @@ export default function AnimationPlayer({
           >
             <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M2.5 8A5.5 5.5 0 1 1 5 3.5" strokeLinecap="round"/>
-              <path d="M2.5 3.5v4H6.5" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M2 1.5L5 3.5L3 6.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
           </button>
         </div>
