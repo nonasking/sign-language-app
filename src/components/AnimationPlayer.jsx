@@ -62,9 +62,9 @@ export default function AnimationPlayer({
                        flex items-center justify-center text-slate-300 transition-all
                        disabled:opacity-30 disabled:cursor-not-allowed"
           >
-            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M2.5 8A5.5 5.5 0 1 1 5 3.5" strokeLinecap="round"/>
-              <path d="M2 1.5L5 3.5L3 6.5" strokeLinecap="round" strokeLinejoin="round"/>
+            <svg className="w-4 h-4" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M14 8A6 6 0 1 1 8 2c1.66 0 3.18.67 4.27 1.76L14 5.33"/>
+              <path d="M14 2v3.33h-3.33"/>
             </svg>
           </button>
         </div>
