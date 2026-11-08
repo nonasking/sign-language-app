@@ -1,40 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
-import { POSES } from '../utils/handPoses'
 import { lerpFullBodyPose } from '../utils/poseFormat'
-import { tokenize, decomposeText } from '../utils/koreanDecompose'
-import dictionary from '../data/ksl_dictionary.json'
-
-const TRANSITION_MS = 120
-const PAUSE_BETWEEN_WORDS_MS = 400
-
-const DEFAULT_POSE = POSES.open
-
-function resolveWord(word) {
-  if (dictionary[word]) {
-    return dictionary[word].sequence.map(({ pose, duration }) => ({
-      pose: POSES[pose] ?? DEFAULT_POSE,
-      duration,
-      label: word,
-    }))
-  }
-
-  // 미등록 단어 → 지문자 폴백
-  return decomposeText(word).flatMap(char => {
-    const p = POSES[char]
-    if (!p) return []
-    return [{ pose: p, duration: 350, label: char }]
-  })
-}
-
-function buildSequence(text) {
-  const frames = []
-  tokenize(text).forEach((word, i, arr) => {
-    frames.push(...resolveWord(word))
-    if (i < arr.length - 1)
-      frames.push({ pose: DEFAULT_POSE, duration: PAUSE_BETWEEN_WORDS_MS, label: '' })
-  })
-  return frames
-}
+import { DEFAULT_POSE, buildSequence, sequenceDuration } from '../utils/signSequence'
 
 export function useSignAnimation() {
   const [isPlaying,     setIsPlaying]     = useState(false)
@@ -55,7 +21,8 @@ export function useSignAnimation() {
   isPlayingRef.current = isPlaying
   sequenceRef.current  = sequence
 
-  const totalDuration = sequence.reduce((s, f) => s + f.duration, 0)
+  // 일시정지 시점까지 현재 프레임에서 흐른 시간(배속 반영). 재개할 때 이어서 보간한다.
+  const pausedElapsedRef = useRef(0)
 
   const animate = useCallback(() => {
     const tick = (now) => {
@@ -63,6 +30,9 @@ export function useSignAnimation() {
 
       const seq = sequenceRef.current
       const idx = frameIdxRef.current
+      // 렌더 시점의 값을 클로저로 잡으면 play() 직후에는 이전 문장의 길이(처음엔 0)가
+      // 쓰여 진행 바가 엉뚱하게 움직인다. 지금 재생 중인 시퀀스에서 직접 계산한다.
+      const totalDuration = sequenceDuration(seq)
 
       if (idx >= seq.length) {
         setIsPlaying(false)
@@ -97,7 +67,7 @@ export function useSignAnimation() {
     }
 
     rafRef.current = requestAnimationFrame(tick)
-  }, [totalDuration])
+  }, [])
 
   const play = useCallback((text) => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current)
@@ -109,6 +79,7 @@ export function useSignAnimation() {
 
     frameIdxRef.current  = 0
     frameStartRef.current = performance.now()
+    pausedElapsedRef.current = 0
     setProgress(0)
     setCurrentPose(DEFAULT_POSE)
     setIsPlaying(true)
@@ -119,13 +90,25 @@ export function useSignAnimation() {
 
   const pause = useCallback(() => {
     if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    if (isPlayingRef.current) {
+      pausedElapsedRef.current = (performance.now() - frameStartRef.current) * speedRef.current
+    }
     setIsPlaying(false)
     isPlayingRef.current = false
   }, [])
 
   const resume = useCallback(() => {
     if (!sequenceRef.current.length || isPlayingRef.current) return
-    frameStartRef.current = performance.now()
+    if (frameIdxRef.current >= sequenceRef.current.length) {
+      // 끝까지 재생한 뒤 재생 버튼을 누르면 처음부터 다시 재생한다.
+      frameIdxRef.current = 0
+      pausedElapsedRef.current = 0
+      setProgress(0)
+      setCurrentPose(DEFAULT_POSE)
+    }
+    // 멈췄던 프레임의 보간을 처음부터가 아니라 멈춘 지점부터 이어 간다.
+    frameStartRef.current = performance.now() - pausedElapsedRef.current / speedRef.current
+    pausedElapsedRef.current = 0
     setIsPlaying(true)
     isPlayingRef.current = true
     animate()
